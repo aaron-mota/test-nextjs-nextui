@@ -1,5 +1,4 @@
-import {nextui} from '@nextui-org/theme'
-
+import { nextui } from '@nextui-org/theme'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -7,14 +6,15 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
   },
-  darkMode: "class",
+  darkMode: 'class',
   plugins: [
     nextui({
+      addCommonColors: true,
       layout: {
         // disabledOpacity: "0.3", // opacity-[0.3]
         // radius: {
@@ -32,23 +32,23 @@ module.exports = {
         light: {},
         dark: {},
         pink: {
-          extend: "light",
+          extend: 'light',
           colors: {
-            background: {
-              DEFAULT: "#fff0f2",
-            },
+            // background: {
+            //   DEFAULT: "#fff0f2",
+            // },
             primary: {
-              DEFAULT: "pink",
-              foreground: "#fff",
+              DEFAULT: 'pink',
+              foreground: '#fff',
             },
           },
           layout: {
             radius: {
-              small: "6px", // rounded-small
-              medium: "8px", // rounded-medium
-              large: "10px", // rounded-large
+              small: '6px', // rounded-small
+              medium: '8px', // rounded-medium
+              large: '10px', // rounded-large
             },
-          }
+          },
         },
       },
     }),

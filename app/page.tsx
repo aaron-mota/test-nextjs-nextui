@@ -1,5 +1,11 @@
 import { GithubIcon, LinkedInIcon, PersonalIcon } from '@/components/icons'
-import { Card, CardBody, Chip } from '@nextui-org/react'
+import {
+  Button,
+  Card,
+  CardBody,
+  Chip,
+  CircularProgress,
+} from '@nextui-org/react'
 import Image from 'next/image'
 
 const cl = {
@@ -63,6 +69,23 @@ export default function Home() {
               <Chip variant="shadow" size="sm" color="primary">
                 Typescript
               </Chip>
+              <Button
+                disableRipple
+                className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+              >
+                Test
+              </Button>
+              <CircularProgress
+                // classNames={{
+                //   svg: 'w-36 h-36 drop-shadow-md',
+                //   indicator: 'stroke-white',
+                //   track: 'stroke-white/10',
+                //   value: 'text-3xl font-semibold text-white',
+                // }}
+                value={70}
+                strokeWidth={4}
+                showValueLabel
+              />
             </div>
             <div className="flex justify-center max-w-sm pt-1">
               <p className="text-center text-md font-semibold">
