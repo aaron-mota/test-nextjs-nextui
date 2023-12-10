@@ -1,5 +1,6 @@
 import {nextui} from '@nextui-org/theme'
 
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -28,15 +29,27 @@ module.exports = {
         // },
       },
       themes: {
-        light: {
+        light: {},
+        dark: {},
+        pink: {
+          extend: "light",
           colors: {
+            background: {
+              DEFAULT: "#fff0f2",
+            },
             primary: {
               DEFAULT: "pink",
               foreground: "#fff",
             },
+          },
+          layout: {
+            radius: {
+              small: "6px", // rounded-small
+              medium: "8px", // rounded-medium
+              large: "10px", // rounded-large
+            },
           }
         },
-        dark: {},
       },
     }),
   ],

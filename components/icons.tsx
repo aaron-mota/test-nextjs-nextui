@@ -250,9 +250,9 @@ export const InstagramIcon: React.FC<IconSvgProps> = ({
 			viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="lucide lucide-instagram"
 			{...props}
     >
@@ -278,9 +278,9 @@ export const PersonalIcon: React.FC<IconSvgProps> = ({
 			viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="lucide lucide-book-heart"
 			{...props}
     >
@@ -288,4 +288,30 @@ export const PersonalIcon: React.FC<IconSvgProps> = ({
       <path d="M16 8.2C16 7 15 6 13.8 6c-.8 0-1.4.3-1.8.9-.4-.6-1-.9-1.8-.9C9 6 8 7 8 8.2c0 .6.3 1.2.7 1.6h0C10 11.1 12 13 12 13s2-1.9 3.3-3.1h0c.4-.4.7-1 .7-1.7z" />
     </svg>
   );
+}
+
+export const CircleIcon: React.FC<IconSvgProps> = ({
+	size = 24,
+	width,
+	height,
+	...props
+}) => {
+	const finalSize = (size || width || height) as number * 0.95;
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			height={finalSize}
+			width={finalSize}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className="lucide lucide-circle"
+			{...props}
+		>
+			<circle cx="12" cy="12" r="10" />
+		</svg>
+	);
 }

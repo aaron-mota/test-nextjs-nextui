@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import {useIsSSR} from "@react-aria/ssr";
 import clsx from "clsx";
 
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import { SunFilledIcon, MoonFilledIcon, CircleIcon } from "@/components/icons";
 
 export interface ThemeSwitchProps {
 	className?: string;
@@ -22,8 +22,36 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const isSSR = useIsSSR();
 
 	const onChange = () => {
-		theme === "light" ? setTheme("dark") : setTheme("light");
-	};
+    const htmlElement = document.documentElement;
+
+    if (theme === "light") {
+        htmlElement.classList.remove("light");
+        htmlElement.style.setProperty("color-scheme", "dark");
+        setTheme("dark");
+    } else if (theme === "dark") {
+        htmlElement.classList.remove("dark");
+        htmlElement.style.setProperty("color-scheme", "light");
+        setTheme("pink");
+    } else if (theme === "pink") {
+        htmlElement.classList.remove("pink");
+        htmlElement.style.setProperty("color-scheme", "light");
+        setTheme("light");
+    }
+};
+
+	// const onChange = () => {
+	// 	if (theme === "light") {
+	// 			setTheme("dark");
+	// 	} else if (theme === "dark") {
+	// 			setTheme("pink");
+	// 	} else {
+	// 			setTheme("light");
+	// 	}
+	// };
+
+	// const onChange = () => {
+	// 	theme === "light" ? setTheme("dark") : setTheme("light");
+	// };
 
 	const {
 		Component,
@@ -34,9 +62,14 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 		getWrapperProps,
 	} = useSwitch({
 		isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+"aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : theme === "dark" ? "pink" : "light"} mode`,
 		onChange,
-	});
+});
+// } = useSwitch({
+// 	isSelected: theme === "light" || isSSR,
+// 	"aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+// 	onChange,
+// });
 
 	return (
 		<Component
@@ -70,7 +103,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 					),
 				})}
 			>
-			 {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
+				{theme === "light" || isSSR ? <SunFilledIcon size={22} /> : theme === "dark" ? <MoonFilledIcon size={22} /> : <CircleIcon size={22} fill="pink" />}
+				{/* {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />} */}
 			</div>
 		</Component>
 	);
