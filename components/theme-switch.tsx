@@ -32,6 +32,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     },
     pink: {
       background:
+        // 'bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-100 to-teal-100',
         'bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100',
     },
   }
