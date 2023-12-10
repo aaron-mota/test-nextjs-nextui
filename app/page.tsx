@@ -2,12 +2,6 @@ import { GithubIcon, LinkedInIcon, PersonalIcon } from "@/components/icons";
 import { Card, CardBody, Chip } from "@nextui-org/react";
 import Image from "next/image";
 
-interface ExternalLinkProps {
-	href: string;
-	icon: React.ReactNode;
-	title: string;
-}
-
 const cl = {
 	groupOpacity: "opacity-80 group-hover:opacity-100",
 	dark: {
@@ -15,12 +9,20 @@ const cl = {
 	}
 };
 
+interface ExternalLinkProps {
+	href: string;
+	icon: React.ReactNode;
+	title: string;
+}
+
 const ExternalLink: React.FC<ExternalLinkProps> = ({ href, icon, title }) => {
 	return (
-		<a href={href} target="_blank" rel="noopener noreferrer">
+		<a href={href} target="_blank" rel="noopener noreferrer" className="group">
 			<Card className="w-full" isHoverable>
-				<CardBody className="group p-3 flex flex-row gap-2 items-center justify-center">
-					{icon}
+				<CardBody className="p-3 flex flex-row gap-2 items-center justify-center">
+					<div className={`${cl.groupOpacity} group-hover:-rotate-6 transition-all duration-300`}>
+						{icon}
+					</div>
 					<h3 className={`${cl.groupOpacity} self-center text-lg`}>{title}</h3>
 				</CardBody>
 			</Card>
@@ -67,7 +69,9 @@ export default function Home() {
 							<ExternalLink
 								title="Github"
 								href="https://www.github.com/aaron-mota"
-								icon={<GithubIcon className={`${cl.groupOpacity}`} />}
+								icon={
+										<GithubIcon className={`${cl.groupOpacity}`} />
+								}
 							/>
 							<ExternalLink
 								title="LinkedIn"
@@ -81,43 +85,3 @@ export default function Home() {
 		</section>
 	);
 }
-
-
-
-{/* <div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
-
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div> */}
