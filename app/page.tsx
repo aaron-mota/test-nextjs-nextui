@@ -5,11 +5,24 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
+import { Card, CardBody } from "@nextui-org/react";
+import Image from "next/image";
 
 export default function Home() {
 	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			
+		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 h-full">
+			<Card>
+				<CardBody>
+					<div className="flex flex-col w-full">
+						<div className="flex justify-center">
+							<Image src="/meFB.jpeg" width={200} height={200} alt="Personal Profile Pic"
+								className="rounded-full"
+							/>
+							{/* TODO... */}
+						</div>
+					</div>
+				</CardBody>
+			</Card>
 		</section>
 	);
 }
