@@ -8,8 +8,11 @@ interface ExternalLinkProps {
 	title: string;
 }
 
-const cls = {
-	groupOpacity: "opacity-50 group-hover:opacity-80",
+const cl = {
+	groupOpacity: "opacity-80 group-hover:opacity-100",
+	dark: {
+		groupOpacity: "dark: opacity-50 dark:group-hover:opacity-80",
+	}
 };
 
 const ExternalLink: React.FC<ExternalLinkProps> = ({ href, icon, title }) => {
@@ -18,7 +21,7 @@ const ExternalLink: React.FC<ExternalLinkProps> = ({ href, icon, title }) => {
 			<Card className="w-full" isHoverable>
 				<CardBody className="group p-3 flex flex-row gap-2 items-center justify-center">
 					{icon}
-					<h3 className={`${cls.groupOpacity} self-center text-lg`}>{title}</h3>
+					<h3 className={`${cl.groupOpacity} self-center text-lg`}>{title}</h3>
 				</CardBody>
 			</Card>
 		</a>
@@ -28,7 +31,7 @@ const ExternalLink: React.FC<ExternalLinkProps> = ({ href, icon, title }) => {
 export default function Home() {
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 h-full">
-			<Card>
+			<Card shadow="lg">
 				<CardBody>
 					<div className="flex flex-col w-full">
 						<div className="flex justify-center">
@@ -59,17 +62,17 @@ export default function Home() {
 							<ExternalLink
 								title="aaronmotacek.dev"
 								href="https://aaronmotacek.dev"
-								icon={<PersonalIcon className={`${cls.groupOpacity}`} />}
+								icon={<PersonalIcon className={`${cl.groupOpacity}`} />}
 							/>
 							<ExternalLink
 								title="Github"
 								href="https://www.github.com/aaron-mota"
-								icon={<GithubIcon className={`${cls.groupOpacity}`} />}
+								icon={<GithubIcon className={`${cl.groupOpacity}`} />}
 							/>
 							<ExternalLink
 								title="LinkedIn"
 								href="https://www.linkedin.com/aaronmotacek"
-								icon={<LinkedInIcon className={`${cls.groupOpacity}`} />}
+								icon={<LinkedInIcon className={`${cl.groupOpacity}`} />}
 							/>
 						</div>
 					</div>

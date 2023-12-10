@@ -24,6 +24,14 @@ export const metadata: Metadata = {
 	},
 };
 
+const cl = {
+	gradientBackground: "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100 bg",
+	dark: {
+		gradientBackground: "dark:bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-gray-700 dark:via-gray-900 dark:to-black",
+	},
+
+}
+
 export default function RootLayout({
 	children,
 }: {
@@ -41,7 +49,7 @@ export default function RootLayout({
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
 					<div className="relative flex flex-col h-screen">
 						<Navbar />
-						<main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+						<main className={`container mx-auto max-w-full px-6 flex-grow ${cl.gradientBackground} ${cl.dark.gradientBackground}`}>
 							{children}
 						</main>
 						{/* <footer className="w-full flex items-center justify-center py-3">
