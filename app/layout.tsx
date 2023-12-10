@@ -24,21 +24,6 @@ export const metadata: Metadata = {
   },
 }
 
-const cl = {
-  light: {
-    gradientBackground: 'light:bg-background',
-  },
-  dark: {
-    gradientBackground:
-      'dark:bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-gray-700 dark:via-gray-900 dark:to-black',
-  },
-  pink: {
-    // TODO: not working yet -- need data-theme something ? (https://github.com/L-Blondy/tw-colors)
-    gradientBackground:
-      'pink:bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] pink:from-indigo-200 pink:via-red-200 pink:to-yellow-100',
-  },
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -57,7 +42,8 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main
-              className={`container mx-auto max-w-full px-6 flex-grow ${cl.light.gradientBackground} ${cl.pink.gradientBackground} ${cl.dark.gradientBackground}`}
+              id="main"
+              className={`container mx-auto max-w-full px-6 flex-grow`}
             >
               {children}
             </main>

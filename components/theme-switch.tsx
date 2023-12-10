@@ -21,22 +21,65 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const { theme, setTheme } = useTheme()
   const isSSR = useIsSSR()
 
+  // TODO: would like to do this in layout.tsx instead (e.g. darK:..., pink:..., etc.) not working yet -- need data-theme something ? (https://github.com/L-Blondy/tw-colors)
+  const cl = {
+    light: {
+      background: 'bg-background',
+    },
+    dark: {
+      background:
+        'dark:bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-gray-700 dark:via-gray-900 dark:to-black',
+    },
+    pink: {
+      background:
+        'bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100',
+    },
+  }
+
+  function splitClassesToArray(classes: string) {
+    return classes.split(' ')
+  }
+
   const onChange = () => {
     const htmlElement = document.documentElement
-    console.log('got here')
+    const mainElement = document.getElementById('main')!
+
     if (theme === 'light') {
-      console.log('got here 2')
+      // remove
       htmlElement.classList.remove('light')
-      htmlElement.style.setProperty('color-scheme', 'dark')
+      splitClassesToArray(cl.light.background).forEach((cl) => {
+        mainElement.classList.remove(cl)
+      })
+      // add
       setTheme('dark')
+      htmlElement.style.setProperty('color-scheme', 'dark')
+      splitClassesToArray(cl.dark.background).forEach((cl) => {
+        mainElement.classList.add(cl)
+      })
     } else if (theme === 'dark') {
+      // remove
       htmlElement.classList.remove('dark')
-      htmlElement.style.setProperty('color-scheme', 'light')
+      splitClassesToArray(cl.dark.background).forEach((cl) => {
+        mainElement.classList.remove(cl)
+      })
+      // add
       setTheme('pink')
-    } else if (theme === 'pink') {
-      htmlElement.classList.remove('pink')
       htmlElement.style.setProperty('color-scheme', 'light')
+      splitClassesToArray(cl.pink.background).forEach((cl) => {
+        mainElement.classList.add(cl)
+      })
+    } else if (theme === 'pink') {
+      // remove
+      htmlElement.classList.remove('pink')
+      splitClassesToArray(cl.pink.background).forEach((cl) => {
+        mainElement.classList.remove(cl)
+      })
+      // add
       setTheme('light')
+      htmlElement.style.setProperty('color-scheme', 'light')
+      splitClassesToArray(cl.light.background).forEach((cl) => {
+        mainElement.classList.add(cl)
+      })
     }
   }
 
