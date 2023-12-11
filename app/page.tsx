@@ -57,6 +57,9 @@ export default function Home() {
               <h1 className="text-3xl font-bold">Aaron Motacek</h1>
             </div>
             <div className="flex justify-center m-4 gap-4">
+              {/* Other components... */}
+            </div>
+            <div className="flex justify-center m-4 gap-4">
               <Chip variant="shadow" size="sm" color="primary">
                 React
               </Chip>
